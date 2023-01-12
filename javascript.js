@@ -1,18 +1,54 @@
-function game()
-//play the game
-//play the five rounds
-//console based
+const choices = ["rock", "paper", "scissors"]
+const winners = [];
 
-function playRound(playerSelection, computerSelection){
-    const playerSelection =
-
+function game() {
+   for(let i = 0; i <=5; i++){
+      playRound();
+   }
+   logWins();``
+}
+  
+  
+function playRound() {
+   const playerSelection = playerChoice();
+   const computerSelection = computerChoice();
+   const winner = checkWinner(playerSelection, computerSelection)
+   winners.push(winner);
 
 }
- 
- function playerChoice (){
-    //get input from player
- }
 
- function computerSelection(){
-    //get input from computer
- } 
+function playerChoice () {
+  let input = prompt("Choose rock, paper, or scissors.")
+  input = input.toLowerCase();
+  console.log(input)
+  return input;
+}
+
+function computerChoice() {
+   // get random input from player 
+
+   return choices[Math.floor(Math.random()*choices.length)]
+}
+
+function checkWinner(choiceP, choiceC){
+   if (choiceP === choiceC){
+      return "It's a tie"
+   }
+   else if (
+      (choiceP === "paper" && choiceC === "rock") || (choiceP === "rock" && choiceC === "scissors") || (choiceP === "scissors" && choiceC === "paper")) {
+   return "You Win!"
+      }
+   else {
+      return "Computer Wins!"
+   }
+ 
+}
+
+
+
+function logWins() {
+   let playerWins = winners.filt
+}
+
+game(); 
+ 
