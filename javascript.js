@@ -1,54 +1,59 @@
-const choices = ["rock", "paper", "scissors"]
-const winners = [];
+let playerWins = []
+let compWins = []
 
 function game() {
-   for(let i = 0; i <=5; i++){
-      playRound();
+   const choices = ["rock", "paper", "scissors"]
+   function getComputerChoice() {
+      return choices[Math.floor(Math.random() * choices.length)];
    }
-   logWins();``
-}
-  
-  
-function playRound() {
-   const playerSelection = playerChoice();
-   const computerSelection = computerChoice();
-   const winner = checkWinner(playerSelection, computerSelection)
-   winners.push(winner);
 
-}
-
-function playerChoice () {
-  let input = prompt("Choose rock, paper, or scissors.")
-  input = input.toLowerCase();
-  console.log(input)
-  return input;
-}
-
-function computerChoice() {
-   // get random input from player 
-
-   return choices[Math.floor(Math.random()*choices.length)]
-}
-
-function checkWinner(choiceP, choiceC){
-   if (choiceP === choiceC){
-      return "It's a tie"
-   }
-   else if (
-      (choiceP === "paper" && choiceC === "rock") || (choiceP === "rock" && choiceC === "scissors") || (choiceP === "scissors" && choiceC === "paper")) {
-   return "You Win!"
+   function getPlayerChoice() {
+      let input = prompt("Pick rock, paper, or scissors.")
+      let input2 = input.toLowerCase();
+      if (input2 === "rock" || input2 === "paper" || input2 === "scissors") {
+         return input2
+      } else {
+         console.log("Error please try again!");
       }
-   else {
-      return "Computer Wins!"
    }
- 
+
+   let playerSelection = getPlayerChoice();
+   let computerSelection = getComputerChoice();
+
+   function playRound(playerSelection, computerSelection) {
+      if
+         (playerSelection === computerSelection) { return ("it's a tie!") }
+      else if
+         (playerSelection === "rock" && computerSelection === "scissors" ||
+         playerSelection === "scissors" && computerSelection === "paper" ||
+         playerSelection === "paper" && computerSelection === "rock") {
+         playerWins++
+         return ("You Win!")
+      }
+      else {
+         compWins++
+         return ("You Lose!")
+      }
+   }
+
+   //console.log("You chose" + " " + playerSelection + "!")
+   //console.log("Computer chose" + " " + computerSelection + "!")
+   console.log(playRound(playerSelection, computerSelection));
 }
 
-
-
-function logWins() {
-   let playerWins = winners.filt
+for (let i = 1; i < 5; i++) {
+   game();
 }
 
-game(); 
- 
+console.log(game());
+
+function gameEnd() {
+   if (playerWins >= 3) {
+      return ("You win the tournament!")
+   }
+   else (compWins >= 3)
+   return ("You lose the tournament")
+
+}
+
+console.log(gameEnd());
